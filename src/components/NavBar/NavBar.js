@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { getCategories } from '../../services/firebase';
 import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.css';
@@ -43,9 +43,13 @@ const NavBar = () => {
         
         <ul className="navbar-menu">
           <li className="navbar-item">
-            <Link to="/" className="navbar-link">
+            <NavLink 
+              to="/" 
+              end
+              className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}
+            >
               Inicio
-            </Link>
+            </NavLink>
           </li>
           
           <li className="navbar-item dropdown">
@@ -53,21 +57,24 @@ const NavBar = () => {
             <ul className="dropdown-menu">
               {categories.map((category) => (
                 <li key={category.id}>
-                  <Link 
+                  <NavLink 
                     to={`/category/${category.id}`} 
-                    className="dropdown-link"
+                    className={({ isActive }) => isActive ? "dropdown-link active" : "dropdown-link"}
                   >
                     {category.name}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
           </li>
           
           <li className="navbar-item">
-            <Link to="/orders" className="navbar-link">
+            <NavLink 
+              to="/orders" 
+              className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}
+            >
               Mis Órdenes
-            </Link>
+            </NavLink>
           </li>
           
           <li className="navbar-item">
