@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from '../../components/ItemDetail/ItemDetail';
 import Loading from '../../components/Loading/Loading';
 import NotFound from '../../components/NotFound/NotFound';
-import { getProductById } from '../../data/products';
+import { getProductById } from '../../services/firebase';
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
@@ -25,12 +25,7 @@ const ItemDetailContainer = () => {
         setError(true);
         setLoading(false);
       });
-  }, [itemId]); // El array de dependencias incluye itemId
-
-  const handleAddToCart = (quantity) => {
-    console.log(`Agregando ${quantity} unidad(es) del producto ${product.name} al carrito`);
-    // Aquí se implementará la lógica del carrito en entregas futuras
-  };
+  }, [itemId]);
 
   if (loading) {
     return <Loading message="Cargando detalles del producto..." />;
@@ -40,7 +35,7 @@ const ItemDetailContainer = () => {
     return <NotFound />;
   }
 
-  return <ItemDetail product={product} onAdd={handleAddToCart} />;
+  return <ItemDetail product={product} />;
 };
 
 export default ItemDetailContainer;

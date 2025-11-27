@@ -1,42 +1,52 @@
 .item-list-container {
   min-height: calc(100vh - 80px);
-  padding: 2rem 0;
+  padding: 24px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .container-header {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  margin-bottom: 2rem;
+  text-align: left;
+  padding: 24px 16px 16px;
+  background: transparent;
+  margin-bottom: 16px;
 }
 
 .greeting {
-  font-size: 2.5rem;
-  color: #333;
-  margin: 0 0 0.5rem 0;
+  font-size: 26px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 8px 0;
   text-transform: capitalize;
 }
 
 .products-count {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.55);
   margin: 0;
 }
 
 .no-products {
   text-align: center;
-  padding: 4rem 2rem;
-  font-size: 1.2rem;
-  color: #666;
+  padding: 80px 32px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.55);
+  background: white;
+  border-radius: 4px;
+  margin: 0 16px;
 }
 
 @media (max-width: 768px) {
   .greeting {
-    font-size: 1.8rem;
+    font-size: 22px;
   }
   
   .container-header {
-    padding: 1.5rem 1rem;
+    padding: 16px 12px 12px;
+  }
+  
+  .item-list-container {
+    padding: 16px 0;
   }
 }
 

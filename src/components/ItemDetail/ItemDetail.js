@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 import './ItemDetail.css';
 
-const ItemDetail = ({ product, onAdd }) => {
+const ItemDetail = ({ product }) => {
+  const { addItem } = useCart();
+  const [quantityAdded, setQuantityAdded] = useState(0);
+
   const handleAdd = (quantity) => {
-    onAdd(quantity);
-    alert(`Se agregaron ${quantity} unidad(es) de "${product.name}" al carrito`);
+    addItem(product, quantity);
+    setQuantityAdded(quantity);
   };
 
   return (
@@ -42,11 +46,27 @@ const ItemDetail = ({ product, onAdd }) => {
           </div>
           
           <div className="detail-actions">
-            <ItemCount 
-              stock={product.stock} 
-              initial={1} 
-              onAdd={handleAdd}
-            />
+            {quantityAdded === 0 ? (
+              <ItemCount 
+                stock={product.stock} 
+                initial={1} 
+                onAdd={handleAdd}
+              />
+            ) : (
+              <div className="added-to-cart">
+                <p className="success-message">
+                  ✓ Se agregaron {quantityAdded} unidad(es) al carrito
+                </p>
+                <div className="action-buttons">
+                  <Link to="/cart" className="btn-go-to-cart">
+                    Ir al carrito
+                  </Link>
+                  <Link to="/" className="btn-continue-shopping">
+                    Seguir comprando
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
           
           <div className="detail-features">
