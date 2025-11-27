@@ -25,7 +25,17 @@ cd ProyectoFinal-Yapura
 npm install
 ```
 
-### 3. Iniciar la aplicación
+### 3. Configurar variables de entorno
+
+Copia el archivo `.env.example` a `.env` y configura tus credenciales de Firebase:
+
+```bash
+cp .env.example .env
+```
+
+Edita el archivo `.env` con tus credenciales de Firebase.
+
+### 4. Iniciar la aplicación
 
 ```bash
 npm start
@@ -57,5 +67,5 @@ App
 
 ## 🔥 Firebase
 
-El proyecto está conectado a Firebase con las credenciales configuradas en `src/services/firebase.js`. Los productos y órdenes se almacenan en Firestore.
+El proyecto requiere credenciales de Firebase configuradas en un archivo `.env` en la raíz del proyecto. Los productos y órdenes se almacenan en Firestore.
 
